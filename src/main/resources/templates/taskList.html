@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+     Milligram stylesheet
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+     Custom stylesheet
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+
+    <title>All Tasks</title>
+
+</head>
+<body>
+
+<h1>All the tasks</h1>
+
+
+
+<h2 th:text= "${ tasks.size() } + ' task(s) to do' ">Tasks to Do!</h2>
+
+<!--This is a table for all of the tasks...no matter how many there are-->
+<ul>
+    <li th:each="task : ${tasks}">
+        <!--If the property is task.urgent, then it will insert the urgent.png next to the table entry-->
+
+        <img class="urgent-icon" th:if="${task.urgent}" src="img/urgente.png">
+        <span th:text="${task.text}"></span>
+        <br><br>
+        <!--<span th:text="${task.id}"></span>-->
+        <button id="myBtn">Modify Task</button>
+        <button id="myBtnn">Delete Task</button>
+
+    </li>
+</ul>
+
+<!--<table>-->
+    <!--<tr>-->
+        <!--<th>URGENT?</th>-->
+        <!--<th>TASK</th>-->
+        <!--<th>ID</th>-->
+        <!--<th></th>-->
+        <!--<th></th>-->
+    <!--</tr>-->
+
+    <!--<tr th:each="task : ${tasks}">-->
+        <!--<td img class="urgent-icon" th:if="${task.urgent}" src="img/urgentd.png"></td>-->
+        <!--<td th:text="${task.text}"></td>-->
+        <!--<td th:text="${task.id}"></td>-->
+        <!--<td><button id="myBtn">Modify Task</button></td>-->
+        <!--<td><button id="myBtnn">Delete Task</button></td>-->
+
+<!--</table>-->
+
+<a href="/">Add a new task</a>
+
+</body>
+</html>
