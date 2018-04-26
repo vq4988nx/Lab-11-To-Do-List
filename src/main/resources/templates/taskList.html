@@ -30,7 +30,7 @@
         <br><br>
         <!--<span th:text="${task.id}"></span>-->
         <button id="myBtn">Modify Task</button>
-        <button id="myBtnn">Delete Task</button>
+        <a th:href="'/delete/' + ${task.id}"button id="myBtnn">Delete Task</button></a>
 
     </li>
 </ul>

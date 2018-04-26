@@ -5,6 +5,7 @@ import com.jeff.hellowdb.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,5 +41,19 @@ public class TaskController {
         modelMap.addAttribute("tasks", tasks.findAll());
         return new ModelAndView("taskList.html", modelMap);
     }
+
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteTask(@PathVariable(name = "id") Long id) {
+        System.out.println(id);
+        tasks.deleteById(id);
+        return "redirect:/allTasks";
+    }
+
+    @RequestMapping("/taskList")
+    public ModelAndView backToTaskList(ModelMap modelMap) {
+        return new ModelAndView("taskList", modelMap);
+    }
+
+
 }
 
